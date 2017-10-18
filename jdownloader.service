@@ -1,0 +1,19 @@
+#/usr/lib/systemd/system/jdownloader.service
+
+[Unit]
+Description=jdownloader
+After=network.target
+
+[Service]
+User=jdownload
+Group=users
+CPUQuota=25%
+Type=simple
+#UMask=000
+ExecStart=/usr/bin/java -Djava.awt.headless=true -jar /opt/JDownloader/JDownloader.jar
+RestartSec=120s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
